@@ -6,7 +6,9 @@ namespace CR
 {
     public class Question : MonoBehaviour {
         public List<Answer> Answers;
+        [TextArea]
         public string TextValue;
+        public string AnimOverride;
 
         // Start is called before the first frame update
         void Start()
@@ -20,9 +22,10 @@ namespace CR
 
         }
 
-        public void Next()
+        public virtual void OnLoad()
         {
-
+            if (AnimOverride != "")
+                RoomateControl.Main().ChangeAnim(AnimOverride);
         }
 
         public static Question Main()
